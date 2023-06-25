@@ -1,0 +1,8 @@
+{
+  "name": "apiCosumerIonic",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

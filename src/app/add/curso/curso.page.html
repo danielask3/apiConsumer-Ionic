@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Adicionar Curso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Acionar Curso</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div style="margin-top: 10px; margin-left: 10px;">
+    <a routerLink="/home" style="text-decoration: none; " href="">
+      <ion-icon style="font-size: 25px; color: #fff;" name="chevron-back-outline"></ion-icon> </a>
+  </div>
+
+  <h2 style="text-align: center; margin-top: 20px; margin-bottom: 60px;">Adicionar Curso</h2>
+
+  <form (ngSubmit)="saveCurso()">
+
+    <div style="margin-left: 10px; margin-right: 10px;">
+      <ion-item style="margin-bottom: 10px; border-radius: 5px;">
+        <ion-input label="Nome" type="text" [(ngModel)]="curso.nome" name="nome" labelPlacement="stacked"
+          placeholder="Nome do curso"></ion-input>
+      </ion-item>
+
+      <ion-item style="margin-bottom: 10px; border-radius: 5px;">
+        <ion-input label="Link" type="text" [(ngModel)]="curso.link" name="link" labelPlacement="stacked"
+          placeholder="Link do curso"></ion-input>
+      </ion-item>
+
+      <ion-item style="border-radius: 5px;">
+        <ion-input label="Descrição" type="text" [(ngModel)]="curso.descricao" name="descricao" labelPlacement="stacked"
+          placeholder="Descrição do curso"></ion-input>
+      </ion-item>
+
+    </div>
+
+
+    <p class="btnPrincipal">
+
+      <ion-button type="submit">
+        <ion-icon name="add-outline"></ion-icon>
+        &nbsp; Adicionar Curso
+
+      </ion-button>
+    </p>
+
+    <p class="btnPrincipal">
+
+      <ion-button *ngIf="curso.id" (click)="deleteCurso(curso.id)" fill="outline">
+        <ion-icon name="trash-outline"></ion-icon> &nbsp; Apagar</ion-button>
+
+    </p>
+
+  </form>
+
+</ion-content>

@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      IPH Cursos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">IPH Cursos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <div class="container">
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h2 style="text-align: center;" class="fw-light">Bem Vindo ao IPH</h2>
+          <p style="text-align: center; margin-left: 10px; margin-right: 10px;" class="lead text-muted">Conheça as
+            nossas ofertas de cursos formativos. Os nossos cursos são os melhores que
+            o mercado tem a oferecer!</p>
+          <p id="btnPrincipal">
+
+            <ion-button>
+              <a routerLink="/addcurso" class="btn btn-primary my-2">
+                <ion-icon name="add-outline"></ion-icon>
+                &nbsp; Adicionar Curso</a>
+
+            </ion-button>
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <p style="margin-top: 50px; margin-left: 13px;">Nossos cursos</p>
+
+    <div>
+
+      <ion-searchbar style="border: 1px solid #fff; border-radius: 10px;" placeholder="Filtar curso" [(ngModel)]="term"></ion-searchbar>
+
+      <ion-list *ngFor="let curso of cursos | cursoFilter:term">
+
+        <ion-card>
+          <iframe style=" border-top-left-radius: 10px;
+          border-top-right-radius: 10px;" width="100%" height="300"
+          [src]="sanitizer.bypassSecurityTrustResourceUrl(curso.link)"
+          title="MacBook Pro M2 Pro - Unboxing & Overview (as a Programmer)" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+          <ion-card-header>
+            <ion-card-title>{{curso.nome}}</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            {{curso.descricao}}
+          </ion-card-content>
+          
+          <a routerLink="/editcurso/{{curso.id}}">
+            <ion-button fill="solid"><ion-icon name="pencil-outline"></ion-icon> &nbsp; Editar</ion-button>
+          </a>
+
+          <ion-button id="open-toast" (click)="deleteCurso(curso.id)" fill="outline"><ion-icon name="trash-outline"></ion-icon> &nbsp; Apagar</ion-button>
+          <!--<ion-toast trigger="open-toast" message="Curso deletado 
+            com sucesso!" [duration]="5000"></ion-toast>-->
+        </ion-card>
+
+      </ion-list>
+  
+    </div>
+
+    <footer style="margin-top: 30px; text-align: center;">
+      <p>&copy; Computação Movel 2023</p>
+    </footer>
+
+  </div>
+
+</ion-content>
